@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <MyHeader/>
-    <MyMain/>
+    <MyHeader @importlink="importTitle"/>
+    <MyMain :titleFilm="nameFilm"/>
   </div>
 </template>
 
@@ -16,6 +16,17 @@ export default {
   components: {
     MyHeader,
     MyMain,
+  },
+  data() {
+    return {
+      nameFilm: "",
+    }
+  },
+
+  methods: {
+    importLink(link) {
+      this.nameFilm = link;
+    }
   }
 }
 </script>

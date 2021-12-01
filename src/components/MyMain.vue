@@ -18,8 +18,11 @@ export default {
   data() {
     return {
       listfilms: [],
-      APIfilm: "https://api.themoviedb.org/3/search/movie?api_key=dd75a648bab4fb373b26c8914bfc572a&query=spider"
+      APIfilm: "https://api.themoviedb.org/3/search/movie?api_key=dd75a648bab4fb373b26c8914bfc572a&query=" + this.titleFilm,
     }
+  },
+  props: {
+    titleFilm : String,
   },
   created() {
     this.getFilms();

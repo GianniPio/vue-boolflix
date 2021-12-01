@@ -5,8 +5,8 @@
     </div>
     <div id="nav">
       <form action="">
-        <input type="text" placeholder="Inserisci il titolo di un film">
-        <button>Cerca</button>
+        <input v-model="link" type="text" placeholder="Inserisci il titolo di un film">
+        <button @click="$emit('importlink', link)">Cerca</button>
       </form>
     </div>
   </header>
