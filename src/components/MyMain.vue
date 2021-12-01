@@ -1,11 +1,19 @@
 <template>
   <main>
+    <Film/>
   </main>
 </template>
 
 <script>
+
+import Film from '@/components/Film.vue';
+
+
 export default {
   name: 'MyMain',
+  components: {
+    Film,
+  }
 }
 </script>
 
