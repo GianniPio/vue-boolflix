@@ -1,7 +1,9 @@
 <template>
   <div class="elefilm">
+    <img :src='"https://image.tmdb.org/t/p/w300" + details.poster_path' :alt="details.original_title">
     <p><span>Titolo:</span> {{details.title}}</p>
     <p><span>Titolo originale:</span> {{details.original_title}}</p>
+    <p><span>Data di uscita:</span> {{details.release_date}}</p>
     <p>
       <span v-if="(details.original_language === 'it')">
         <div class="flag">
