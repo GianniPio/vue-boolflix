@@ -3,13 +3,20 @@
     <div id="title">
         <p>BOOLFLIX</p>
     </div>
-    <div></div>
+    <div id="nav">
+      <form action="">
+        <input type="text" placeholder="Inserisci il titolo di un film">
+        <button>Cerca</button>
+      </form>
+    </div>
   </header>
 </template>
 
 <script>
+
 export default {
   name: 'MyHeader',
+
 }
 </script>
 
@@ -18,15 +25,35 @@ export default {
 
 header {
     background-color: black;
+    display: flex;
+    justify-content: space-between;
 
     #title {
 
-        p {
-            color: red;
-            font-size: 20px;
-            padding: 20px;
-        }
+      p {
+          color: red;
+          font-size: 20px;
+          padding: 20px;
+      }
         
+    }
+
+    #nav {
+      padding: 20px;
+
+      input {
+        height: 25px;
+        padding: 15px 15px 15px 5px;
+      }
+
+
+      button {
+        cursor: pointer;
+        height: 25px;
+        margin-left: 5px;
+        padding: 15px;
+        line-height: 10%;
+      }
     }
 }
 
