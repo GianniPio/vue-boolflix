@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <MyHeader @importlink="importTitle"/>
-    <MyMain :titleFilm="nameFilm"/>
+    <MyMain :listfilms="listfilms"/>
   </div>
 </template>
 
@@ -9,7 +9,7 @@
 
 import MyHeader from './components/MyHeader.vue';
 import MyMain from './components/MyMain.vue';
-
+import axios from "axios";
 
 export default {
   name: 'App',
@@ -20,12 +20,20 @@ export default {
   data() {
     return {
       nameFilm: "",
+      listfilms: [],
+      APIfilm: "https://api.themoviedb.org/3/search/movie?api_key=dd75a648bab4fb373b26c8914bfc572a&query=",
     }
   },
 
   methods: {
-    importLink(link) {
-      this.nameFilm = link;
+    importTitle(title) {
+      this.nameFilm = title;
+      this.getFilms();
+    },
+    getFilms() {
+      axios.get(this.APIfilm + this.nameFilm).then((result) => {
+        this.listfilms = result.data.results;
+      })
     }
   }
 }

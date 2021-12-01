@@ -6,7 +6,7 @@
     <div id="nav">
       <form action="">
         <input v-model="link" type="text" placeholder="Inserisci il titolo di un film">
-        <button @click="$emit('importlink', link)">Cerca</button>
+        <button @click.prevent="$emit('importlink', link)">Cerca</button>
       </form>
     </div>
   </header>
@@ -19,7 +19,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 
 header {
