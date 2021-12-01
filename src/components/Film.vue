@@ -8,10 +8,43 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bandiera_italiana_foto.svg/1024px-Bandiera_italiana_foto.svg.png" :alt="details.original_language">
         </div>
       </span>
-      <span v-else>
+      <span v-else-if="(details.original_language === 'en')">
         <div class="flag">
           <img src="https://www.novalibandiere.it/wp-content/uploads/granbretagna.gif" :alt="details.original_language">
         </div>
+      </span>
+      <span v-else-if="(details.original_language === 'pt')">
+        <div class="flag">
+          <img src="https://www.novalibandiere.it/wp-content/uploads/portogallo.gif" :alt="details.original_language">
+        </div>
+      </span>
+      <span v-else-if="(details.original_language === 'es')">
+        <div class="flag">
+          <img src="https://www.transumanzapedali.it/wp-content/uploads/2020/07/spain-2906824_640.png" :alt="details.original_language">
+        </div>
+      </span>
+      <span v-else-if="(details.original_language === 'sv')">
+        <div class="flag">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Sweden.svg/2000px-Flag_of_Sweden.svg.png" :alt="details.original_language">
+        </div>
+      </span>
+      <span v-else-if="(details.original_language === 'fr')">
+        <div class="flag">
+          <img src="https://i.ebayimg.com/images/g/L10AAOSwzk5ej4co/s-l300.jpg" :alt="details.original_language">
+        </div>
+      </span>
+      <span v-else-if="(details.original_language === 'hr')">
+        <div class="flag">
+          <img src="https://www.novalibandiere.it/wp-content/uploads/Croazia.jpg" :alt="details.original_language">
+        </div>
+      </span>
+      <span v-else-if="(details.original_language === 'de')">
+        <div class="flag">
+          <img src="https://www.cosepercrescere.it/wp-content/uploads/2014/06/GERMANIA.jpg" :alt="details.original_language">
+        </div>
+      </span>
+      <span v-else>
+        {{details.original_language}}
       </span>
     </p>
     <p><span>Voto:</span> {{details.vote_average}}</p>
