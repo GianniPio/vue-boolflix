@@ -4,10 +4,8 @@
         <p>BOOLFLIX</p>
     </div>
     <div id="nav">
-      <form action="">
-        <input v-model="link" type="text" placeholder="Inserisci il titolo di un film">
-        <button @click.prevent="$emit('importlink', link)">Cerca</button>
-      </form>
+      <input v-model="link" type="text" placeholder="Inserisci il titolo di un film">
+      <button @click.prevent="$emit('importlink', link)">Cerca</button>
     </div>
   </header>
 </template>

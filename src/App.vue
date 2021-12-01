@@ -21,7 +21,7 @@ export default {
     return {
       nameFilm: "",
       listfilms: [],
-      APIfilm: "https://api.themoviedb.org/3/search/movie?api_key=dd75a648bab4fb373b26c8914bfc572a&query=",
+      APIfilm: "https://api.themoviedb.org/3/search/movie?api_key=dd75a648bab4fb373b26c8914bfc572a&language=it-IT&query=",
     }
   },
 
@@ -32,7 +32,7 @@ export default {
     },
     getFilms() {
       axios.get(this.APIfilm + this.nameFilm).then((result) => {
-        this.listfilms = result.data.results;
+        this.listfilms = result.data.results;  
       })
     }
   }

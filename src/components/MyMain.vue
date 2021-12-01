@@ -16,9 +16,6 @@ export default {
   },
   props: {
     listfilms : Array,
-  },
-  created() {
-    this.getFilms();
   }
 }
 </script>
