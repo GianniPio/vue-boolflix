@@ -1,9 +1,9 @@
 <template>
   <div class="elefilm">
-    <span>{{details.title}}</span>
-    <span>{{details.original_title}}</span>
-    <span>{{details.original_language}}</span>
-    <span>{{details.vote_average}}</span>
+    <p><span>Titolo:</span> {{details.title}}</p>
+    <p><span>Titolo originale:</span> {{details.original_title}}</p>
+    <p><span>Lingua:</span> {{details.original_language}}</p>
+    <p><span>Voto:</span> {{details.vote_average}}</p>
   </div>
 </template>
 
@@ -20,12 +20,22 @@ export default {
 <style scoped lang="scss">
 
     .elefilm {
+        width: calc(95% / 3);
+        margin: 10px;
+        background-color: rgb(73, 73, 73) ;
 
-        width: calc(100% / 3);
+        border: 1px solid white;
+        text-align: center;
 
-        img {
-            border: 1px solid white;
+        p {
+            margin: 10px;
+            color: white;
+
+            span {
+                color: red;
+            }
         }
+
     }
 
 </style>
