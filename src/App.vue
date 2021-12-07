@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <MyHeader @importlink="importTitle"/>
-    <MyMain :listfilms="listfilms"/>
+    <MyMain :listfilms="listfilms"  :listSerie="listSerie"/>
   </div>
 </template>
 
@@ -22,6 +22,8 @@ export default {
       nameFilm: "",
       listfilms: [],
       APIfilm: "https://api.themoviedb.org/3/search/movie?api_key=dd75a648bab4fb373b26c8914bfc572a&language=it-IT&query=",
+      listSerie: [],
+      APISerie: "https://api.themoviedb.org/3/search/tv?api_key=dd75a648bab4fb373b26c8914bfc572a&language=it-IT&query="
     }
   },
 
@@ -29,10 +31,17 @@ export default {
     importTitle(title) {
       this.nameFilm = title;
       this.getFilms();
+      this.getSerie();
     },
     getFilms() {
       axios.get(this.APIfilm + this.nameFilm).then((result) => {
         this.listfilms = result.data.results;  
+      })
+    },
+    getSerie() {
+      axios.get(this.APISerie + this.nameFilm).then((result) => {
+        this.listSerie = result.data.results;
+        console.log(result.data.results)
       })
     }
   }

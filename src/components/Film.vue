@@ -1,13 +1,13 @@
 <template>
   <div class="elefilm">
     <div class="img_film">
-      <img :src='"https://image.tmdb.org/t/p/w300" + details.poster_path' :alt="details.original_title">
+      <img :src='"https://image.tmdb.org/t/p/w300" + details.poster_path' :alt="details.original_title || details.original_name">
     </div>
     
     <div class="descr_film">
-      <p><span>Titolo:</span> {{details.title}}</p>
-    <p><span>Titolo originale:</span> {{details.original_title}}</p>
-    <p><span>Data di uscita:</span> {{details.release_date}}</p>
+      <p><span>Titolo:</span> {{details.title || details.name}}</p>
+    <p><span>Titolo originale:</span> {{details.original_title || details.original_name}}</p>
+    <p><span>Data di uscita:</span> {{details.release_date || details.first_air_date}}</p>
     <p>
       <span>
         <div class="flag">
@@ -36,6 +36,8 @@ export default {
         return "https://www.novalibandiere.it/wp-content/uploads/granbretagna.gif"
       } else if (lingua == "fr") {
         return "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931958%29.svg/280px-Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931958%29.svg.png"
+      } else if (lingua == "es") {
+        return "https://m.media-amazon.com/images/I/41vY+lH0M2L._AC_SX425_.jpg"
       } else {
         return "https://www.rainews.it/dl/img/2018/11/310x0_1541418990687.earth_11015_1920.jpg"
       }

@@ -1,6 +1,7 @@
 <template>
   <main>
     <Film v-for="film, i in listfilms" :key="i" :details="film"/>
+    <Film v-for="serie, i in listSerie" :key="i" :details="serie"/>
   </main>
 </template>
 
@@ -16,6 +17,7 @@ export default {
   },
   props: {
     listfilms : Array,
+    listSerie : Array,
   }
 }
 </script>
