@@ -15,7 +15,7 @@
         </div>
       </span>
     </p>
-    <p><span>Voto:</span> {{details.vote_average}}</p>
+    <p><span>Voto:</span> {{newVoto}}/5</p>
     </div>
     
   </div>
@@ -27,8 +27,16 @@ export default {
   props: {
       details: Object,
   },
-
+  data() {
+    return {
+      // voto in base 5
+      newVoto: Math.ceil(this.details.vote_average / 2),
+    }
+    
+  },
   methods: {
+    // funzione che stampa le bandiere
+    // volevo fare in modo che la lingua fosse uguale al nome di un immagine che salvavo in img, in modo da semplificare ancora la funzione, ma non mi leggeva l'immagine e ho cambiato ragionamento
     flagLanguage(lingua) {
       if (lingua == "it") {
         return "https://upload.wikimedia.org/wikipedia/commons/c/ca/Bandiera_italiana_foto.svg"
