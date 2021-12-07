@@ -15,7 +15,7 @@
         </div>
       </span>
     </p>
-    <p><span>Voto:</span> {{newVoto}}/5</p>
+    <p><span>Voto:</span> <i class="fas fa-star yellow" v-for="star, x in newVoto" :key="x"></i> </p>
     </div>
     
   </div>
@@ -31,6 +31,7 @@ export default {
     return {
       // voto in base 5
       newVoto: Math.ceil(this.details.vote_average / 2),
+      maxVote: 5
     }
     
   },
@@ -111,6 +112,10 @@ export default {
         }
       }
     }
+  }
+
+  .yellow {
+    color: yellow;
   }
 
 }
