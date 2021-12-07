@@ -1,55 +1,23 @@
 <template>
   <div class="elefilm">
-    <img :src='"https://image.tmdb.org/t/p/w300" + details.poster_path' :alt="details.original_title">
-    <p><span>Titolo:</span> {{details.title}}</p>
+    <div class="img_film">
+      <img :src='"https://image.tmdb.org/t/p/w300" + details.poster_path' :alt="details.original_title">
+    </div>
+    
+    <div class="descr_film">
+      <p><span>Titolo:</span> {{details.title}}</p>
     <p><span>Titolo originale:</span> {{details.original_title}}</p>
     <p><span>Data di uscita:</span> {{details.release_date}}</p>
     <p>
-      <span v-if="(details.original_language === 'it')">
+      <span>
         <div class="flag">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Bandiera_italiana_foto.svg/1024px-Bandiera_italiana_foto.svg.png" :alt="details.original_language">
+            <img :src="flagLanguage(details.original_language)" :alt="details.original_language">
         </div>
-      </span>
-      <span v-else-if="(details.original_language === 'en')">
-        <div class="flag">
-          <img src="https://www.novalibandiere.it/wp-content/uploads/granbretagna.gif" :alt="details.original_language">
-        </div>
-      </span>
-      <span v-else-if="(details.original_language === 'pt')">
-        <div class="flag">
-          <img src="https://www.novalibandiere.it/wp-content/uploads/portogallo.gif" :alt="details.original_language">
-        </div>
-      </span>
-      <span v-else-if="(details.original_language === 'es')">
-        <div class="flag">
-          <img src="https://www.transumanzapedali.it/wp-content/uploads/2020/07/spain-2906824_640.png" :alt="details.original_language">
-        </div>
-      </span>
-      <span v-else-if="(details.original_language === 'sv')">
-        <div class="flag">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Sweden.svg/2000px-Flag_of_Sweden.svg.png" :alt="details.original_language">
-        </div>
-      </span>
-      <span v-else-if="(details.original_language === 'fr')">
-        <div class="flag">
-          <img src="https://i.ebayimg.com/images/g/L10AAOSwzk5ej4co/s-l300.jpg" :alt="details.original_language">
-        </div>
-      </span>
-      <span v-else-if="(details.original_language === 'hr')">
-        <div class="flag">
-          <img src="https://www.novalibandiere.it/wp-content/uploads/Croazia.jpg" :alt="details.original_language">
-        </div>
-      </span>
-      <span v-else-if="(details.original_language === 'de')">
-        <div class="flag">
-          <img src="https://www.cosepercrescere.it/wp-content/uploads/2014/06/GERMANIA.jpg" :alt="details.original_language">
-        </div>
-      </span>
-      <span v-else>
-        {{details.original_language}}
       </span>
     </p>
     <p><span>Voto:</span> {{details.vote_average}}</p>
+    </div>
+    
   </div>
 </template>
 
@@ -58,6 +26,20 @@ export default {
   name: 'Film',
   props: {
       details: Object,
+  },
+
+  methods: {
+    flagLanguage(lingua) {
+      if (lingua == "it") {
+        return "https://upload.wikimedia.org/wikipedia/commons/c/ca/Bandiera_italiana_foto.svg"
+      } else if (lingua == "en") {
+        return "https://www.novalibandiere.it/wp-content/uploads/granbretagna.gif"
+      } else if (lingua == "fr") {
+        return "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931958%29.svg/280px-Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931958%29.svg.png"
+      } else {
+        return "https://www.rainews.it/dl/img/2018/11/310x0_1541418990687.earth_11015_1920.jpg"
+      }
+    }
   }
 }
 </script>
@@ -66,32 +48,61 @@ export default {
 <style scoped lang="scss">
 
   .elefilm {
-  width: calc(95% / 3);
+  width: 23.4848833%;
   margin: 10px;
-  background-color: rgb(73, 73, 73) ;
+  background-color: rgb(73, 73, 73);
+  position: relative;
+  height: 500px;
 
   border: 1px solid white;
   text-align: center;
 
-  p {
-    margin: 10px;
-    color: white;
-
-    span {
-      color: red;
+  .img_film {
+    z-index: 1;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    
+    img {
+      height: 100%;
+      width: 100%;
     }
 
-    .flag {
-      width: 60px;
-      margin: 0 auto;
+    &:hover{
+      filter: opacity(0);
+    }
 
-      img {
-        object-fit: contain;
-        width: 100%;
+  }
+
+  .descr_film {
+
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    height: 100%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+
+    p {
+      margin: 10px;
+      color: white;
+
+      span {
+        color: red;
       }
-  
+
+      .flag {
+        width: 60px;
+        margin: 0 auto;
+
+        img {
+          object-fit: contain;
+          width: 100%;
+        }
+      }
     }
   }
+
 }
 
 </style>
