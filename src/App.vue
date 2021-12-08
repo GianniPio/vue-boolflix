@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <MyHeader @importlink="importTitle"/>
-    <MyMain :listfilms="listfilms"  :listSerie="listSerie"/>
+    <MyHeader @importlink="importTitle"/> <!-- prendo in v-model per portarlo nella funzione "importTitle" -->
+    <MyMain :listfilms="listfilms"  :listSerie="listSerie"/> <!-- trasferisco gli arrey di film e serie nel main -->
   </div>
 </template>
 
@@ -19,25 +19,28 @@ export default {
   },
   data() {
     return {
-      nameFilm: "",
-      listfilms: [],
-      APIfilm: "https://api.themoviedb.org/3/search/movie?api_key=dd75a648bab4fb373b26c8914bfc572a&language=it-IT&query=",
-      listSerie: [],
-      APISerie: "https://api.themoviedb.org/3/search/tv?api_key=dd75a648bab4fb373b26c8914bfc572a&language=it-IT&query="
+      nameFilm: "", // salvo il v-model tramite la funzione
+      listfilms: [], // salvo l'array di film che ottengo dalla funzione getFilms
+      APIfilm: "https://api.themoviedb.org/3/search/movie?api_key=dd75a648bab4fb373b26c8914bfc572a&language=it-IT&query=", // API dei film
+      listSerie: [], // salvo l'array delle serie che ottengo dalla funzione getSerie
+      APISerie: "https://api.themoviedb.org/3/search/tv?api_key=dd75a648bab4fb373b26c8914bfc572a&language=it-IT&query=" //API delle serie
     }
   },
 
   methods: {
-    importTitle(title) {
+    // salvo il v-model dell'header in una variabile, poi chiamo le funzioni getFilms e getSerie
+    importTitle(title) {  
       this.nameFilm = title;
       this.getFilms();
       this.getSerie();
     },
+    // tramite axios, unisco l'API dei film con il v-model e dal risultato estratto solamente l'array data
     getFilms() {
       axios.get(this.APIfilm + this.nameFilm).then((result) => {
         this.listfilms = result.data.results;  
       })
     },
+    // tramite axios, unisco l'API delle serie con il v-model e dal risultato estratto solamente l'array data
     getSerie() {
       axios.get(this.APISerie + this.nameFilm).then((result) => {
         this.listSerie = result.data.results;

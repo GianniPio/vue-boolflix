@@ -1,28 +1,30 @@
 <template>
+  <!-- Cartella del film o della serie -->
   <div class="elefilm">
+    <!-- Copertia del film o della serie -->
     <div class="img_film">
-      <img :src='"https://image.tmdb.org/t/p/w300" + details.poster_path' :alt="details.original_title || details.original_name">
+      <img :src='"https://image.tmdb.org/t/p/w300" + details.poster_path' :alt="details.original_title || details.original_name"> <!-- Stampa la coperta del film o della serie -->
     </div>
     
+    <!-- Descrizione del film o della serie -->
     <div class="descr_film">
-      <p><span>Titolo:</span> {{details.title || details.name}}</p>
-    <p><span>Titolo originale:</span> {{details.original_title || details.original_name}}</p>
-    <p><span>Data di uscita:</span> {{details.release_date || details.first_air_date}}</p>
-    <p>
-      <span>
-        <div class="flag">
-            <img :src="flagLanguage(details.original_language)" :alt="details.original_language">
-        </div>
-      </span>
-    </p>
-    <p>
-      <span>Voto:</span> 
-      <i class="fas fa-star yellow" v-for="star, x in newVoto" :key="x">
-      </i><i class="far fa-star" v-for="empty, y in maxVote - newVoto" :key="y"></i>
-    </p>
-    <p><span>Overview:</span>{{details.overview}} </p>
-</div>
-    
+      <p><span>Titolo:</span> {{details.title || details.name}}</p> <!-- Titolo del film o della serie -->
+      <p><span>Titolo originale:</span> {{details.original_title || details.original_name}}</p> <!-- Titolo originale del film o della serie -->
+      <p><span>Data di uscita:</span> {{details.release_date || details.first_air_date}}</p> <!-- Data di uscita del film o della serie -->
+      <p>
+        <span>
+          <div class="flag">
+              <img :src="flagLanguage(details.original_language)" :alt="details.original_language"> <!-- Bandiera della lingua -->
+          </div>
+        </span>
+      </p>
+      <p>
+        <span>Voto:</span> 
+        <i class="fas fa-star yellow" v-for="star, x in newVoto" :key="x"> <!-- stampa stelle colorate in base al voto -->
+        </i><i class="far fa-star" v-for="empty, y in maxVote - newVoto" :key="y"></i> <!-- stampa stelle vuote sottraendo il voto dal voto massimo -->
+      </p>
+      <p><span>Overview:</span>{{details.overview}} </p> <!-- Descrizione del film o serie -->
+    </div>
   </div>
 </template>
 
@@ -34,15 +36,13 @@ export default {
   },
   data() {
     return {
-      // voto in base 5
-      newVoto: Math.ceil(this.details.vote_average / 2),
-      maxVote: 5,
+      newVoto: Math.ceil(this.details.vote_average / 2), // voto in base 5
+      maxVote: 5, //voto massimo
     }
     
   },
   methods: {
     // funzione che stampa le bandiere
-    // volevo fare in modo che la lingua fosse uguale al nome di un immagine che salvavo in img, in modo da semplificare ancora la funzione, ma non mi leggeva l'immagine e ho cambiato ragionamento
     flagLanguage(lingua) {
       return require("@/assets/img/"+lingua+".jpg")
     }
