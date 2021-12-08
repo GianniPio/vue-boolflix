@@ -1,11 +1,15 @@
 <template>
   <header>
+
+    <!-- Titolo -->
     <div id="title">
         <p>BOOLFLIX</p>
     </div>
+
+    <!-- Barra per la ricerca -->
     <div id="nav">
       <input v-model="link" type="text" placeholder="Inserisci il titolo di un film">
-      <button @click.prevent="$emit('importlink', link)">Cerca</button>
+      <button @click.prevent="$emit('importlink', link)">Cerca</button> <!--Al click trasferisce il v-model "link" all'app -->
     </div>
   </header>
 </template>

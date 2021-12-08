@@ -20,7 +20,8 @@
       <i class="fas fa-star yellow" v-for="star, x in newVoto" :key="x">
       </i><i class="far fa-star" v-for="empty, y in maxVote - newVoto" :key="y"></i>
     </p>
-  </div>
+    <p><span>Overview:</span>{{details.overview}} </p>
+</div>
     
   </div>
 </template>
@@ -36,7 +37,6 @@ export default {
       // voto in base 5
       newVoto: Math.ceil(this.details.vote_average / 2),
       maxVote: 5,
-      // emptyStars: maxVote - newVoto,
     }
     
   },
@@ -44,17 +44,7 @@ export default {
     // funzione che stampa le bandiere
     // volevo fare in modo che la lingua fosse uguale al nome di un immagine che salvavo in img, in modo da semplificare ancora la funzione, ma non mi leggeva l'immagine e ho cambiato ragionamento
     flagLanguage(lingua) {
-      if (lingua == "it") {
-        return "https://upload.wikimedia.org/wikipedia/commons/c/ca/Bandiera_italiana_foto.svg"
-      } else if (lingua == "en") {
-        return "https://www.novalibandiere.it/wp-content/uploads/granbretagna.gif"
-      } else if (lingua == "fr") {
-        return "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931958%29.svg/280px-Flag_of_France_%281794%E2%80%931815%2C_1830%E2%80%931958%29.svg.png"
-      } else if (lingua == "es") {
-        return "https://m.media-amazon.com/images/I/41vY+lH0M2L._AC_SX425_.jpg"
-      } else {
-        return "https://www.rainews.it/dl/img/2018/11/310x0_1541418990687.earth_11015_1920.jpg"
-      }
+      return require("@/assets/img/"+lingua+".jpg")
     }
   }
 }
@@ -64,7 +54,7 @@ export default {
 <style scoped lang="scss">
 
   .elefilm {
-  width: 23.4848833%;
+  width: calc(95% / 3);
   margin: 10px;
   background-color: rgb(73, 73, 73);
   position: relative;
@@ -93,11 +83,9 @@ export default {
   .descr_film {
 
     position: absolute;
-    top: 80%;
-    left: 50%;
-    height: 100%;
-    width: 100%;
-    transform: translate(-50%, -50%);
+    top: 5%;
+    text-align: left;
+    font-size: 15px;
 
     p {
       margin: 10px;
