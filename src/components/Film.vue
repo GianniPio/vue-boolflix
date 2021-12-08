@@ -15,8 +15,12 @@
         </div>
       </span>
     </p>
-    <p><span>Voto:</span> <i class="fas fa-star yellow" v-for="star, x in newVoto" :key="x"></i> </p>
-    </div>
+    <p>
+      <span>Voto:</span> 
+      <i class="fas fa-star yellow" v-for="star, x in newVoto" :key="x">
+      </i><i class="far fa-star" v-for="empty, y in maxVote - newVoto" :key="y"></i>
+    </p>
+  </div>
     
   </div>
 </template>
@@ -31,7 +35,8 @@ export default {
     return {
       // voto in base 5
       newVoto: Math.ceil(this.details.vote_average / 2),
-      maxVote: 5
+      maxVote: 5,
+      // emptyStars: maxVote - newVoto,
     }
     
   },
@@ -116,6 +121,10 @@ export default {
 
   .yellow {
     color: yellow;
+  }
+
+  .white {
+    color: white;
   }
 
 }
